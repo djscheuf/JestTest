@@ -13,8 +13,8 @@ jest.mock('designLoaded');
 jest.mock('designCopied');
 jest.mock('../analytics');
 
-describe('Copy Estimate action', () => {
-  describe('Given an Estimate that can be copied', () => {
+describe('Copy Design action', () => {
+  describe('Given an Design that can be copied', () => {
     let dispatchMock;
     let mockState = {};
     const getMockState = () => mockState;
@@ -58,28 +58,34 @@ describe('Copy Estimate action', () => {
       exampleAction(newName)(dispatchMock, getMockState);
     });
 
-    it('should convey loading cycle to the user', () => {
-      const dispatchCalls = dispatchMock.mock.calls.reduce((acc, b) => acc.concat(b), []);
-      expect(dispatchCalls).toContainEqual(loading());
-      expect(dispatchCalls).toContainEqual(loaded());
-    });
-
-    it('should perform copy action', () => {
-      expect(designBuilderApi.copyDesign).toBeCalledWith(givenDesignId, newName);
-    });
-
-    it('should display newly created copy', () => {
-      expect(designLoaded).toBeCalledWith(nextDesign, {});
-    });
-
-    it('should log the event for analytics', () => {
-      expect(designDuplicated).toHaveBeenCalled();
-    });
-
-    it('should copy counts from original estimate', () => {
-      expect(designCopied).toBeCalledWith(givenDesignId, nextDesignId, {
-        [givenContainerId]: nextContainerId,
+    describe('When the user copies that design',()=>{
+      beforeAll(()=>{
+        exampleAction(newName)(dispatchMock, getMockState);
       });
-    });
+
+      it('should convey loading cycle to the user', () => {
+        const dispatchCalls = dispatchMock.mock.calls.reduce((acc, b) => acc.concat(b), []);
+        expect(dispatchCalls).toContainEqual(loading());
+        expect(dispatchCalls).toContainEqual(loaded());
+      });
+  
+      it('should perform copy action', () => {
+        expect(designBuilderApi.copyDesign).toBeCalledWith(givenDesignId, newName);
+      });
+  
+      it('should display newly created copy', () => {
+        expect(designLoaded).toBeCalledWith(nextDesign, {});
+      });
+  
+      it('should log the event for analytics', () => {
+        expect(designDuplicated).toHaveBeenCalled();
+      });
+  
+      it('should copy counts from original estimate', () => {
+        expect(designCopied).toBeCalledWith(givenDesignId, nextDesignId, {
+          [givenContainerId]: nextContainerId,
+        });
+      });
+    })
   });
 });
