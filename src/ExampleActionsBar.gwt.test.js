@@ -10,7 +10,7 @@ import CopyStyle from './CopyStyleConnector';
 import DuplicateItem from './DuplicateItemConnector';
 
 describe('ItemActionsBar', () => {
-  describe('no product is selected and container contains only one item', () => {
+  describe('Given NO product is selected and container contains ONLY ONE item', () => {
     const props = {
       itemId: 'item',
       hasProduct: false,
@@ -23,7 +23,7 @@ describe('ItemActionsBar', () => {
       expect(result.type()).toBeNull();
     });
   });
-  describe('no product is selected and container has multiple items', () => {
+  describe('Given NO product is selected and container has MULTIPLE items', () => {
     const props = {
       itemId: 'item',
       hasProduct: false,
@@ -40,7 +40,7 @@ describe('ItemActionsBar', () => {
       expect(result.find(DuplicateItem).exists()).toBe(false);
     });
   });
-  describe('product is selected', () => {
+  describe('Given product is SELECTED', () => {
     const props = {
       itemId: 'item',
       hasProduct: true,
@@ -57,7 +57,7 @@ describe('ItemActionsBar', () => {
       expect(result.find(DuplicateItem).exists()).toBe(true);
     });
   });
-  describe('product is invalid', () => {
+  describe('Given product is INVALID', () => {
     const props = {
       itemId: 'item',
       hasProduct: true,
