@@ -1,20 +1,20 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Autobahn.Contracts.Merchandising.Models.Interfaces;
-using Autobahn.Contracts.Merchandising.Queries.Matrix.Scenarios.Interfaces;
-using Autobahn.Contracts.OptionAndRulesManagement.Queries.Interfaces;
-using Autobahn.Domain.Merchandising.Matrix;
-using Autobahn.Domain.Merchandising.Matrix.Scenarios;
-using Autobahn.Domain.Ordering.ValueObjects;
-using Autobahn.Services.Merchandising.Matrix;
+using MyMonolith.Contracts.Merchandising.Models.Interfaces;
+using MyMonolith.Contracts.Merchandising.Queries.Matrix.Scenarios.Interfaces;
+using MyMonolith.Contracts.OptionAndRulesManagement.Queries.Interfaces;
+using MyMonolith.Domain.Merchandising.Matrix;
+using MyMonolith.Domain.Merchandising.Matrix.Scenarios;
+using MyMonolith.Domain.Ordering.ValueObjects;
+using MyMonolith.Services.Merchandising.Matrix;
 using FluentAssertions;
 using NUnit.Framework;
-using Autobahn.Domain.OptionAndRulesManagement.Entities.Rules;
+using MyMonolith.Domain.OptionAndRulesManagement.Entities.Rules;
 using Rhino.Mocks;
 using Veyron.Tests;
 
-namespace Autobahn.Tests.Unit.Merchandising.Services
+namespace MyMonolith.Tests.Unit.Merchandising.Services
 {
   [TestFixture]
   class TestScenarioRuleEvaluatora : RavenDbTest
@@ -31,7 +31,7 @@ namespace Autobahn.Tests.Unit.Merchandising.Services
       var scenariosQuery = MockRepository.GenerateStub<ISiteProductScenariosQuery>();
       var evaluator = new ScenarioRuleEvaluator(query, executor, builder, scenariosQuery);
 
-      var testProduct = new Autobahn.Domain.Configurations.Entities.Configuration()
+      var testProduct = new MyMonolith.Domain.Selections.Entities.Selection()
       {
         SiteProductVersion = new SiteProductVersion(1, 1, 1)
         {
@@ -45,7 +45,7 @@ namespace Autobahn.Tests.Unit.Merchandising.Services
     }
 
     [Test]
-    public void FindsSingleScenarioBasedOnConfiguration()
+    public void FindsSingleScenarioBasedOnSelection()
     {
       var scenarioToMatchRule = MockRepository.GenerateStub<IRuleModel>();
       scenarioToMatchRule.Stub(x => x.GetRuleXml()).Return("Pick Me");
@@ -59,7 +59,7 @@ namespace Autobahn.Tests.Unit.Merchandising.Services
       var builder = MockRepository.GenerateStub<IProductTypeBuilder>();
       builder.Stub(b => b.Build(Arg<Type>.Is.Anything, Arg<ConfiguredProduct>.Is.Anything)).Return(new object());
       var evaluator = new ScenarioRuleEvaluator(query, executor, builder, null);
-      var testProduct = new Autobahn.Domain.Configurations.Entities.Configuration()
+      var testProduct = new MyMonolith.Domain.Selections.Entities.Selection()
       {
         SiteProductVersion = new SiteProductVersion(1, 1, 1)
         {
@@ -97,7 +97,7 @@ namespace Autobahn.Tests.Unit.Merchandising.Services
       var builder = MockRepository.GenerateStub<IProductTypeBuilder>();
       builder.Stub(b => b.Build(Arg<Type>.Is.Anything, Arg<ConfiguredProduct>.Is.Anything)).Return(new object());
       var evaluator = new ScenarioRuleEvaluator(query, executor, builder, null);
-      var testProduct = new Autobahn.Domain.Configurations.Entities.Configuration()
+      var testProduct = new MyMonolith.Domain.Selections.Entities.Selection()
       {
         SiteProductVersion = new SiteProductVersion(1, 1, 1)
         {
@@ -136,7 +136,7 @@ namespace Autobahn.Tests.Unit.Merchandising.Services
       var builder = MockRepository.GenerateStub<IProductTypeBuilder>();
       builder.Stub(b => b.Build(Arg<Type>.Is.Anything, Arg<ConfiguredProduct>.Is.Anything)).Return(new object());
       var evaluator = new ScenarioRuleEvaluator(query, executor, builder, null);
-      var testProduct = new Autobahn.Domain.Configurations.Entities.Configuration()
+      var testProduct = new MyMonolith.Domain.Selections.Entities.Selection()
       {
         SiteProductVersion = new SiteProductVersion(1, 1, 1)
         {

@@ -1,23 +1,23 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Autobahn.Contracts.Merchandising.Models.Interfaces;
-using Autobahn.Contracts.OptionAndRulesManagement.Queries.Interfaces;
-using Autobahn.Domain.Merchandising.Matrix;
-using Autobahn.Domain.Merchandising.Matrix.Scenarios;
-using Autobahn.Services.Merchandising.Matrix;
+using MyMonolith.Contracts.Merchandising.Models.Interfaces;
+using MyMonolith.Contracts.OptionAndRulesManagement.Queries.Interfaces;
+using MyMonolith.Domain.Merchandising.Matrix;
+using MyMonolith.Domain.Merchandising.Matrix.Scenarios;
+using MyMonolith.Services.Merchandising.Matrix;
 using FluentAssertions;
 using NUnit.Framework;
-using Autobahn.Domain.OptionAndRulesManagement.Entities.Rules;
-using ProductSetup.Domain.ProductConfiguration.Entities;
+using MyMonolith.Domain.OptionAndRulesManagement.Entities.Rules;
+using ProductSetup.Domain.ProductSelection.Entities;
 using Rhino.Mocks;
 using Veyron.Tests;
-using Product = Autobahn.Domain.Ordering.ValueObjects.Product;
-using Site = Autobahn.Domain.Ordering.ValueObjects.Site;
-using SiteProduct = Autobahn.Domain.Ordering.ValueObjects.SiteProduct;
-using SiteProductVersion = Autobahn.Domain.Ordering.ValueObjects.SiteProductVersion;
+using Product = MyMonolith.Domain.Ordering.ValueObjects.Product;
+using Site = MyMonolith.Domain.Ordering.ValueObjects.Site;
+using SiteProduct = MyMonolith.Domain.Ordering.ValueObjects.SiteProduct;
+using SiteProductVersion = MyMonolith.Domain.Ordering.ValueObjects.SiteProductVersion;
 
-namespace Autobahn.Tests.Unit.Merchandising.Services
+namespace MyMonolith.Tests.Unit.Merchandising.Services
 {
     [TestFixture]
     class TestScenarioRuleEvaluator : InMemoryDatabaseWithRavenDbTest
@@ -44,7 +44,7 @@ namespace Autobahn.Tests.Unit.Merchandising.Services
         }
 
         [Test]
-        public void finds_single_scenario_based_on_configuration()
+        public void finds_single_scenario_based_on_Selection()
         {
             given_these_scenarios(new[] { _scenarioToMatch });
             given_executor_expected_to_return_true_once();
@@ -118,7 +118,7 @@ namespace Autobahn.Tests.Unit.Merchandising.Services
         IProductTypeBuilder _builder;
         IRuleTypeQuery _query;
         IRuleModel _scenarioToMatchRule;
-        Autobahn.Domain.Configurations.Entities.Configuration _testProduct;
+        MyMonolith.Domain.Selections.Entities.Selection _testProduct;
         ScenarioRuleEvaluator _evaluator;
         Scenario _scenarioToMatch;
         List<Scenario> _scenarios;
@@ -186,7 +186,7 @@ namespace Autobahn.Tests.Unit.Merchandising.Services
 
         void given_test_product()
         {
-            _testProduct = new Autobahn.Domain.Configurations.Entities.Configuration()
+            _testProduct = new MyMonolith.Domain.Selections.Entities.Selection()
             {
                 SiteProductVersion = new SiteProductVersion(1, 1, 1)
                 {
