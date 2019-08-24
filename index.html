@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Web UI Testing</title>
+
+    <link rel="stylesheet" href="talk/css/reveal.css" />
+    <link rel="stylesheet" href="talk/css/theme/league.css" />
+    <link rel="stylesheet" href="talk/css/mine.css" />
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="talk/lib/css/zenburn.css" />
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.type = "text/css";
+      link.href = window.location.search.match(/print-pdf/gi)
+        ? "talk/css/print/pdf.css"
+        : "talk/css/print/paper.css";
+      document.getElementsByTagName("head")[0].appendChild(link);
+    </script>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-markdown id="title">
+          <textarea data-template>
+            # Web UI Testing? Yes, You Can!
+            _By Daniel Scheufler_
+          </textarea
+          >
+        </section>
+
+        <section id="overview-and-improving">
+          <section data-markdown>
+            <textarea data-template>
+              ## Overview
+              * Who am I?
+              * Why do we test?
+              * How can AAA help you?
+              * A GWT path forward
+            </textarea
+            >
+          </section>
+          <section data-markdown id="hiring">
+            <textarea data-template>
+            ![alt text](talk/img/improving/hiring.png "Improving is hiring")
+            </textarea>
+          </section>
+          <section data-markdown id="training">
+            <textarea data-template>
+            ![alt text](talk/img/improving/training.png "Upcoming Trainings")
+            </textarea>
+          </section>
+        </section>
+
+        <section id="who-am-i">
+          <h2>Who am I?</h2>
+          <div class="content">
+            <div class="column"><img src="talk/img/better_me_sm.png" /></div>
+            <div class="column">
+              <ul>
+                <li>Christian</li>
+                <li>Husband</li>
+                <li>Father</li>
+                <li>Improver</li>
+                <li><i>'Man-Machine Translator'</i></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="why-test">
+            <section data-markdown id="the-purpose">
+              <textarea data-template>
+                [!alt text](talk/img/why-test.png "What do we fall down... I mean, test?")
+              </textarea>
+              <aside class="notes">
+                So why do we fall down master bruce? So we can learn to pick ourselves back up again. 
+                Why do we test? (Who are the tests written for?)
+                [Proof the code works is byproduct]
+                We test to capture the Context, and intent of the code. (assumptions, scenarios, use-cases etc.)
+              </aside>
+            </section>
+            <section data-markdown id="why-code-example">
+              <textarea data-template>
+                ```javascript
+                if( stuff === things || (array.length > 2 && thisFlag && !thisOtherFlag)) {
+                  ... 
+                  doTheThing();
+                }
+                ```
+              </textarea>
+              <aside class="notes">
+                By way of example, suppose you had the code above ^. [Read english approx aloud] Is it really clear _WHY_ that conditional means doTheThing?
+                Now to be honest, I've written code like thi, before refactoring too. But all too often I've run into a method that became this, an no one left a test.
+                Maybe I got a comment, but it was even less helpful. It was clearly outdated, leaving the code still unclear.
+              </aside>
+            </section>
+            <section data-markdown id="test-value">
+              <textarea data-template>
+                ## Values of Testing
+                * Capture/Codify WHY the code was written
+                * Highlight places where the code organization or architecture could improve
+              </textarea>
+            </section>
+            <section data-markdown id="test-values-2">
+              <textarea data-template>
+                ## Values of Testing
+                * Provide means to involve the business in the code
+                * Verify the code functions as expected
+              </textarea>
+            </section>
+        </section>
+
+        <section data-markdown id="brass-tacks">
+          <textarea data-template>
+            [!alt text](talk/img/brass-tacks.png "Down to brass tacks")
+          </textarea>
+        </section>
+
+        <section id="how-aaa">
+            <section data-markdown id="familiar-with-testing">
+              <textarea data-template>
+                ## Heard of AAA?
+              </textarea>
+            </section>
+            <section data-markdown id="aaa-examples">
+              <textarea data-template>
+                ![alt text](./talk/img/training_wheels.jpg "Training Wheels")
+              </textarea>
+              <aside class="notes">
+                Quickly go over anatomy of AAA test, contrast C# and JS AAA [ruleEval, and exampleActionBar]
+                Remark: Lots of Repeated code
+                FAR better than NO tests
+              </aside>
+            </section>
+        </section>
+
+        <section id="how-gwt">
+            <section data-markdown id="familiar-with-testing">
+              <textarea data-template>
+                ## A GWT Path forward
+              </textarea>
+            </section>
+            <section data-markdown id="gwt-examples">
+              <textarea data-template>
+                ![alt text](talk/img/better_way.gif "Better Way")
+              </textarea>
+              <aside class="notes">
+                GWT => Given-When-Then 
+                Show Example of RuleEval in C#
+                Discuss ExampleThunk for Create on Existing Code
+                Discuss ExampleActionBar for Migrate from AAA
+                Aim to Describe Scenario, in English FIRST
+                (This allows more team to contibute to a test)
+                [Can use as output of a desing discussion]
+                Mention use of test case to convey meaning, not follow common language constraings (NOT, DOES, WHATEVER)
+              </aside>
+            </section>
+            <section data-markdown id="gwt-design">
+              <textarea data-template>
+                ![alt text](talk/img/design.jpg "Improved Designs")
+              </textarea>
+              <aside class="notes">
+                Now back when I talked about the complex conditional, I mentioned that test could improve our designs.
+                Let's go look at how.
+              </aside>
+            </section>
+        </section>
+        
+        <section id="q-and-a">
+          <section id="feedback" data-markdown>
+            <textarea data-template>
+          ## Having any feedback?
+          ![alt text](talk/img/qr/speaker_form.png "goo.gl/forms/c1sJ2BJX32zAct7J3")
+          </textarea
+            >
+          </section>
+          <section id="blog-and-email" data-markdown>
+            <textarea data-template>
+            ## Care for more?
+            * [daniel.scheufler.io](//daniel.scheufler.io)
+            * [daniel@scheufler.io](mailto:daniel@scheufler.io)
+            </textarea>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script src="talk/lib/js/head.min.js"></script>
+    <script src="talk/js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        history: true,
+        dependencies: [
+          { src: "talk/plugin/markdown/marked.js" },
+          { src: "talk/plugin/markdown/markdown.js" },
+          { src: "talk/plugin/notes/notes.js", async: true },
+          {
+            src: "talk/plugin/highlight/highlight.js",
+            async: true,
+            callback: function() {
+              hljs.initHighlightingOnLoad();
+            }
+          }
+        ]
+      });
+    </script>
+  </body>
+</html>

@@ -1,6 +1,6 @@
 # Talking Points
 
-Flow:: Intro, Example C# (AAA, GWT) , Examples JS (AAA, GWT), discuss Design changes due to Testing
+Flow :: Intro, Example C# (AAA, GWT) , Examples JS (AAA, GWT), discuss Design changes due to Testing
 
 ## Why Test
 - Describe the intent/context of the code (assumptions, scenarios, usecase etc.)
