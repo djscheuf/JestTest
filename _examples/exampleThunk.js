@@ -7,7 +7,7 @@ import globalError from './globalError';
 import saveToMyAccount from './saveToMyAccount';
 import { designDuplicated } from '../analytics';
 
-const exampleAction = newName => (dispatch, getState) => {
+const exampleThunk = newName => (dispatch, getState) => {
   dispatch(loading());
   const { uiState, entities } = getState().designBuilder;
   const { selectedThing } = uiState;
@@ -36,4 +36,4 @@ const exampleAction = newName => (dispatch, getState) => {
     });
 };
 
-export default exampleAction;
+export default exampleThunk;

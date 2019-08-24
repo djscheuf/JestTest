@@ -1,7 +1,7 @@
 /* eslint-env jest */
 
 import * as designBuilderApi from '../designBuilderApi';
-import exampleAction from './exampleAction';
+import exampleThunk from './exampleThunk';
 import designLoaded from 'designLoaded';
 import designCopied from 'designCopied';
 import { designDuplicated } from '../analytics';
@@ -55,12 +55,12 @@ describe('Copy Design action', () => {
         },
       };
 
-      exampleAction(newName)(dispatchMock, getMockState);
+      exampleThunk(newName)(dispatchMock, getMockState);
     });
 
     describe('When the user copies that design',()=>{
       beforeAll(()=>{
-        exampleAction(newName)(dispatchMock, getMockState);
+        exampleThunk(newName)(dispatchMock, getMockState);
       });
 
       it('should convey loading cycle to the user', () => {
