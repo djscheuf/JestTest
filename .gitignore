@@ -1,3 +1,11 @@
+# Generated files from Talk
+.sass-cache
+talk/css/reveal.min.css
+talk/js/reveal.min.js
+
+.vscode/
+
+
 # Logs
 logs
 *.log

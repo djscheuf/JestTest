@@ -1,0 +1,31 @@
+.content {
+  display: flex;
+  flex-direction: row;
+}
+
+.canvas {
+  background: white;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  width: 100%;
+}
+
+.canvas .icon {
+  flex-grow: 1;
+  font-size: 48px;
+  margin-right: 10px;
+  color: black;
+}
+
+.canvas .image {
+  flex-grow: 1;
+}
+
+.column {
+  flex-grow: 1;
+  display: flex;
+  align-items: left;
+  flex-direction: column;
+  margin: 10px !important;
+}
